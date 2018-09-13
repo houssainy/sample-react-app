@@ -3,6 +3,9 @@
 //
 
 import React, { Component } from 'react';
+import { UIRouter, UIView, pushStateLocationPlugin } from '@uirouter/react';
+
+import router from '../../config/router/router'
 
 import './app.css';
 
@@ -11,12 +14,12 @@ import AppHeader from '../header/header';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <AppHeader></AppHeader>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <UIRouter plugins={[pushStateLocationPlugin]} states={router.states} config={router.config}>
+        <div className="App">
+          <AppHeader></AppHeader>
+          <UIView/>
+        </div>
+      </UIRouter>
     );
   }
 }
